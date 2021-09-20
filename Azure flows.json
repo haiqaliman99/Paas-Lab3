@@ -1,0 +1,417 @@
+[
+    {
+        "id": "583d65d8b8cd3629",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c628420c8076fe9e",
+        "type": "ibmiot in",
+        "z": "583d65d8b8cd3629",
+        "authentication": "apiKey",
+        "apiKey": "e62ed215b66c43b6",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "1234567",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 100,
+        "y": 160,
+        "wires": [
+            [
+                "8cd2396d7cf84993",
+                "0f8f4ec0634d6547",
+                "379ef22c1b2135a6",
+                "06f59c87cf710c85"
+            ]
+        ]
+    },
+    {
+        "id": "8cd2396d7cf84993",
+        "type": "debug",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4f7b4c72b0d0766c",
+        "type": "ui_button",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "group": "a0f01cf302460a14",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "379ef22c1b2135a6",
+        "type": "function",
+        "z": "583d65d8b8cd3629",
+        "name": "humidity",
+        "func": " msg.payload=msg.payload.Data.Environment.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "96df3640389d997c"
+            ]
+        ]
+    },
+    {
+        "id": "06f59c87cf710c85",
+        "type": "function",
+        "z": "583d65d8b8cd3629",
+        "name": "pressure",
+        "func": "msg.payload=msg.payload.Data.Environment.pressure;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "c9ce1ef414468ce4"
+            ]
+        ]
+    },
+    {
+        "id": "0f8f4ec0634d6547",
+        "type": "function",
+        "z": "583d65d8b8cd3629",
+        "name": "temperature",
+        "func": "msg.payload=msg.payload.Data.Environment.temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 260,
+        "wires": [
+            [
+                "65e88c812e9c15f1"
+            ]
+        ]
+    },
+    {
+        "id": "65e88c812e9c15f1",
+        "type": "ui_gauge",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "group": "a0f01cf302460a14",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 400,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "96df3640389d997c",
+        "type": "ui_gauge",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "group": "a0f01cf302460a14",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "160",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 390,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c9ce1ef414468ce4",
+        "type": "ui_gauge",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "group": "a0f01cf302460a14",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "pressure",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 390,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "28c9ccde6b333f1b",
+        "type": "ibmiot out",
+        "z": "583d65d8b8cd3629",
+        "authentication": "apiKey",
+        "apiKey": "e62ed215b66c43b6",
+        "outputType": "evt",
+        "deviceId": "123456",
+        "deviceType": "2.0.6",
+        "eventCommandType": "event",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 580,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "cf157b947894c15b",
+        "type": "inject",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Normal",
+        "payloadType": "str",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "0f04b6c127a39e48"
+            ]
+        ]
+    },
+    {
+        "id": "e011d940b098a3a5",
+        "type": "inject",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Alert",
+        "payloadType": "str",
+        "x": 100,
+        "y": 620,
+        "wires": [
+            [
+                "0f04b6c127a39e48"
+            ]
+        ]
+    },
+    {
+        "id": "0f04b6c127a39e48",
+        "type": "function",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "func": "msg.payload = { \"a\" : { \"indicator\" : msg.payload}};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "3a3382787f57c6ac"
+            ]
+        ]
+    },
+    {
+        "id": "3a3382787f57c6ac",
+        "type": "json",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 580,
+        "wires": [
+            [
+                "28c9ccde6b333f1b"
+            ]
+        ]
+    },
+    {
+        "id": "1f1d90a5d416e6f3",
+        "type": "ibmiot in",
+        "z": "583d65d8b8cd3629",
+        "authentication": "apiKey",
+        "apiKey": "e62ed215b66c43b6",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "12345",
+        "applicationId": "",
+        "deviceType": "+",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": false,
+        "allApplications": "",
+        "allDeviceTypes": true,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 230,
+        "y": 840,
+        "wires": [
+            [
+                "4c578833d34dd47a"
+            ]
+        ]
+    },
+    {
+        "id": "4c578833d34dd47a",
+        "type": "debug",
+        "z": "583d65d8b8cd3629",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "e62ed215b66c43b6",
+        "type": "ibmiot",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "q3ly75.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "a0f01cf302460a14",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "a5bb7117709d8e74",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a5bb7117709d8e74",
+        "type": "ui_tab",
+        "name": "Environment",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
